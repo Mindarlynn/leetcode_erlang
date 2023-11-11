@@ -13,7 +13,7 @@ get_substr_len(S, Set, I, J, Max) ->
         true -> Max;
         false ->
             SJ = lists:nth(J, S),
-            case sets:is_subset(sets:from_list([SJ]), Set) of
+            case sets:is_element(SJ, Set) of
                 false -> get_substr_len(S, sets:add_element(SJ, Set), I, J + 1, lists:max([Max, J - I + 1]));
                 true -> 
                     {NewI, NewSet} = skip_set(S, Set, I, J),
