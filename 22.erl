@@ -11,8 +11,8 @@ generate_parenthesis(Op, Cl, N, Str) ->
         _ -> []
     end,
     Ans3 = case Cl < Op of
-            true -> generate_parenthesis(Op, Cl + 1, N, Str ++ [$)]);
-            _ -> []
+        true -> generate_parenthesis(Op, Cl + 1, N, Str ++ [$)]);
+        _ -> []
     end,
 
     Ans1 ++ Ans2 ++ Ans3.
