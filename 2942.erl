@@ -2,9 +2,9 @@
 
 find_words_containing_impl([], _) -> [];
 find_words_containing_impl([{Idx, Word} | T], X) ->
-    case min(length([E || E <- Word, E =:= X]), 1) of
-        0 -> find_words_containing_impl(T, X);
-        1 -> [Idx - 1] ++ find_words_containing_impl(T, X)
+    case lists:member(X, Word) of
+        true -> [Idx - 1] ++ find_words_containing_impl(T, X);
+        false -> find_words_containing_impl(T, X)
     end.
 
 find_words_containing(Words, X) ->
