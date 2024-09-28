@@ -33,7 +33,7 @@ count_garbages(List) -> lists:map(
 %% garbage_collection_impl(Garbage, Travel, Left, CurType, AmountTime, ResultGarbage)
 garbage_collection_impl(Unbinarized, Travel, Left, Type) -> garbage_collection_impl(Unbinarized, Travel, Left, Type, 0).
 garbage_collection_impl([], _, _, _, AmountTime) -> AmountTime;
-garbage_collection_impl(Garbage, _, Left, _, AmountTime) when Left =:= 0 -> AmountTime;
+garbage_collection_impl(_, _, Left, _, AmountTime) when Left =:= 0 -> AmountTime;
 garbage_collection_impl([CurHouse | T], [Time | T2], Left, CurType, AmountTime) ->
     Count = length([X || X <- CurHouse, X =:= CurType]),
     garbage_collection_impl(T, T2, Left - Count, CurType, AmountTime + Time + Count).
